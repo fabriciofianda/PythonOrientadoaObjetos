@@ -43,12 +43,14 @@ class Playlist:
         self.nome = nome
         self._programas = programas
 
+    def __getitem__(self, item):
+        return self._programas
+
     @property
     def listagem(self):
         return self._programas
 
-    @property
-    def length(self):
+    def __len__(self):
         return len(self._programas)
 
 
@@ -71,6 +73,7 @@ Flash.darlike()
 playlist = [Matrix, idm, Flash, Wednesday]
 netflix = Playlist("Netflix - ", playlist)
 
-print(f'Tamanho da Playlist {netflix.length}')
+print(f'Tamanho da Playlist {len(netflix)}')
+
 for programa in netflix.listagem:
    print(programa)
